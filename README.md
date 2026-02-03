@@ -1,2 +1,5 @@
-# LeetCode-Medium
-Medium level leetcode problems solved with optimal approaches.
+# LeetCode Medium Solutions
+
+## ✅ Solved Problems
+
+- **287** — Find The Duplicate Number
