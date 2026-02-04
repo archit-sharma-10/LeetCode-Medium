@@ -1,15 +1,9 @@
 package leetcode;
 /*
-    287. Find the Duplicate Number
-
-    Constraints: Cant create new Data Structure and cant modify the given array. Need to solve with
-    constant external space.
-
-    - Approach involves detecting the cycle in the given integer array.
-    - Hare and tortoise approach: Fast and slow pointers to detect cycle.
-    - CYCLE DETECTION WITH DO-WHILE
-    - After finding the intersection point, starting the slow pointer again from start and moving it one
-    step at a time, same with fast pointer till (slow != fast).
+    287 - Find the Duplicate Number
+    Topic: Two Pointers / Cycle Detection
+    Time: O(n)
+    Notes: We cant create new Data Structures, only new variables can be created. Array cannot be modified. Used the hare and tortoise approach to detect the cycle first and then find the duplicate element.
  */
 public class _0287_Find_The_Duplicate_Number {
     public int findDuplicate(int[] nums) {
