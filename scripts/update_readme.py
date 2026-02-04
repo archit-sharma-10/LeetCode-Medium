@@ -4,31 +4,70 @@ import re
 SRC_DIR = "src/leetcode"
 README = "README.md"
 
-pattern = re.compile(r"_([0-9]+)_(.+)\.java")
+# filename: _0287_Find_The_Duplicate_Number.java
+file_pattern = re.compile(r"_([0-9]+)_(.+)\.java$")
 
-problems = []
+topic_pattern = re.compile(r"^\s*Topic:\s*(.+)")
+time_pattern = re.compile(r"^\s*Time:\s*(.+)")
+notes_pattern = re.compile(r"^\s*Notes:\s*(.+)")
 
-if not os.path.exists(SRC_DIR):
-    print("Source directory not found:", SRC_DIR)
-    exit(1)
+rows = []
 
-for file in os.listdir(SRC_DIR):
-    m = pattern.match(file)
-    if m:
-        num = int(m.group(1))
-        name = m.group(2).replace("_", " ")
-        problems.append((num, name))
+if not os.path.isdir(SRC_DIR):
+    raise RuntimeError(f"Directory not found: {SRC_DIR}")
 
-problems.sort()
+for fname in os.listdir(SRC_DIR):
+    path = os.path.join(SRC_DIR, fname)
+
+    if not os.path.isfile(path):
+        continue
+
+    m = file_pattern.match(fname)
+    if not m:
+        continue
+
+    num = int(m.group(1))
+    title = m.group(2).replace("_", " ")
+
+    topic = "—"
+    time = "—"
+    notes = "—"
+
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            if topic == "—":
+                mt = topic_pattern.match(line)
+                if mt:
+                    topic = mt.group(1).strip()
+
+            if time == "—":
+                mt = time_pattern.match(line)
+                if mt:
+                    time = mt.group(1).strip()
+
+            if notes == "—":
+                mn = notes_pattern.match(line)
+                if mn:
+                    notes = mn.group(1).strip()
+
+    rows.append((num, title, topic, time, notes))
+
+rows.sort(key=lambda x: x[0])
 
 lines = []
-lines.append("# LeetCode Medium Solutions\n\n")
+
+# ===== README HEADER =====
+lines.append("# LeetCode Problems\n\n")
 lines.append("## ✅ Solved Problems\n\n")
 
-for n, name in problems:
-    lines.append(f"- **{n}** — {name}\n")
+# ===== TABLE =====
+lines.append("| # | Title | Topic | Time | Notes |\n")
+lines.append("|---|------|------|------|------|\n")
 
-with open(README, "w", encoding = "utf-8") as f:
+for num, title, topic, time, notes in rows:
+    lines.append(f"| {num} | {title} | {topic} | {time} | {notes} |\n")
+
+with open(README, "w", encoding="utf-8") as f:
     f.writelines(lines)
 
-print("README updated.")
+print(f"README updated.")
