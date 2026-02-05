@@ -1,0 +1,37 @@
+package leetcode;
+/*
+    54 - Spiral Matrix
+    Topic: Matrix / Simulation
+    Time: O(m * n)
+    Notes: Maintain four boundaries and traverse layer by layer while shrinking inward. Top, bottom, left, right, 4 loops with shrinks and checks,
+*/
+public class _0054_Spiral_Matrix {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> result = new ArrayList<>();
+        int left = 0, right = matrix[0].length-1;
+        int top = 0, bottom = matrix.length - 1;
+        while(left <= right && top <= bottom){
+            for(int i=left; i<= right; i++){
+                result.add(matrix[top][i]);
+            }
+            top++;
+            for(int i=top; i<=bottom; i++){
+                result.add(matrix[i][right]);
+            }
+            right--;
+            if(top <= bottom){
+                for(int i=right; i>=left; i--){
+                    result.add(matrix[bottom][i]);
+                }
+                bottom--;
+            }
+            if(left <= right){
+                for(int i=bottom; i>=top; i--){
+                    result.add(matrix[i][left]);
+                }
+                left++;
+            }
+        }
+        return result;
+    }
+}
