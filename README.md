@@ -6,6 +6,7 @@
 |---|------|------|------|------|
 | 7 | Reverse Integer | Math / Simulation | O(n) | Reverse digits using modulo/division and return 0 when overflow exceeds 32-bit range. |
 | 8 | String to Integer atoi | String / Parsing / Validation | O(n) | Scan string once, handle optional sign, accumulate digits and clamp on overflow. Create an index pointer, skip to first non null character, check the sign and store it, now keep on multiplying the digits and adding to a long variable. Check for overflows and return integer result. |
+| 11 | Container With Most Water | Two Pointers / Greedy | O(n) | Move the smaller height inward while tracking maximum area formed by two lines. |
 | 54 | Spiral Matrix | Matrix / Simulation | O(m * n) | Maintain four boundaries and traverse layer by layer while shrinking inward. Top, bottom, left, right, 4 loops with shrinks and checks, |
 | 59 | Spiral Matrix II | Matrix / Simulation | O(n^2) | Fill matrix layer by layer while shrinking four directional boundaries. Top, bottom, left, right, 4 loops with shrinks and checks. |
 | 152 | Maximum Product Subarray | Array / Greedy / Kadane's Algorithm | O(n) | Run Kadane-style product scan from both ends to handle negative numbers and zeros. Check for max at every iteration and if product is 0, make it 1. |
