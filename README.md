@@ -15,6 +15,7 @@
 | 229 | Majority Element II | Array / Greedy | O(n) | Track two candidates with counters. 5 if else statements to check the values and counts, then verify frequencies greater than n/3. |
 | 287 | Find The Duplicate Number | Two Pointers / Cycle Detection | O(n) | We cant create new Data Structures, only new variables can be created. Array cannot be modified. Used the hare and tortoise approach to detect the cycle first and then find the duplicate element. |
 | 442 | Find All Duplicates in an Array | Array / In-place Marking | O(n) | Use index as hash by negating visited positions to detect duplicates. |
+| 448 | Find All Numbers Disappeared in an Array | Array / In-place Marking | O(n) | Mark visited indices by negating values and collect indices that remain positive. |
 | 451 | Sort Characters By Frequency | HashMap / Sorting | O(n + k log k) | Count character frequencies and sort distinct characters by descending frequency. |
 | 540 | Single Element in a Sorted Array | Binary Search | O(log n) | Use index parity to detect broken pairing and shrink search to the side containing the single element. Noticing pattern from start of array, if index is even, duplicate is on right, if index is odd, duplicate is on left. Noticing where the pattern breaks gives us the answer. |
 | 694 | Number of Distinct Islands | DFS / Hashing | O(m * n) | Encode island shape using DFS traversal path signature and store unique patterns in a set. |
