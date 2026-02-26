@@ -12,6 +12,7 @@
 | 59 | Spiral Matrix II | Matrix / Simulation | O(n^2) | Fill matrix layer by layer while shrinking four directional boundaries. Top, bottom, left, right, 4 loops with shrinks and checks. |
 | 62 | Unique Paths | Dynamic Programming | O(m * n) | Use 2D DP where each cell accumulates paths from top and left. |
 | 152 | Maximum Product Subarray | Array / Greedy / Kadane's Algorithm | O(n) | Run Kadane-style product scan from both ends to handle negative numbers and zeros. Check for max at every iteration and if product is 0, make it 1. |
+| 215 | Kth Largest Element in an Array | Heap / Priority Queue | O(n log k) | Maintain min heap of size k storing k largest elements; root gives kth largest. |
 | 229 | Majority Element II | Array / Greedy | O(n) | Track two candidates with counters. 5 if else statements to check the values and counts, then verify frequencies greater than n/3. |
 | 287 | Find The Duplicate Number | Two Pointers / Cycle Detection | O(n) | We cant create new Data Structures, only new variables can be created. Array cannot be modified. Used the hare and tortoise approach to detect the cycle first and then find the duplicate element. |
 | 347 | Top K Frequent Elements | HashMap / Sorting | O(n + k log k) | Count frequencies, sort distinct elements by descending frequency using custom comparator and pick top k. |
